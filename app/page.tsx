@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Bebas_Neue, Inter } from "next/font/google";
+import { CounterButton } from "@/components/counter-button";
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
@@ -36,27 +37,27 @@ export default function Home() {
         </div>
 
         <div className="flex gap-3 mb-4">
-          <button
+          <CounterButton
+            label="−"
             onClick={decrement}
-            className={`${inter.className} flex-1 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded cursor-pointer`}
-          >
-            −
-          </button>
+            className={`${inter.className} flex-1 bg-red-500 hover:bg-red-600 text-white`}
+            ariaLabel="Decrement"
+          />
 
-          <button
+          <CounterButton
+            label="+"
             onClick={increment}
-            className={`${inter.className} flex-1 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded cursor-pointer`}
-          >
-            +
-          </button>
+            className={`${inter.className} flex-1 bg-green-500 hover:bg-green-600 text-white`}
+            ariaLabel="Increment"
+          />
         </div>
 
-        <button
-          onClick={() => reset()}
-          className={`${inter.className} w-full bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded cursor-pointer`}
-        >
-          Reset
-        </button>
+        <CounterButton
+          label="Reset"
+          onClick={reset}
+          className={`${inter.className} w-full bg-gray-500 hover:bg-gray-600 text-white`}
+          ariaLabel="Reset"
+        />
       </div>
     </div>
   );
