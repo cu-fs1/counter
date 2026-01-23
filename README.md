@@ -90,27 +90,33 @@ The main page component that contains the counter functionality and user interfa
 **2. Imports**
 ```tsx
 import { useState } from "react";
-import { Bebas_Neue, Inter } from "next/font/google";
+import { CounterButton } from "@/components/counter-button";
+import { bebasNeue, inter } from "@/fonts";
 ```
 - `useState`: React hook to manage counter state
-- `Bebas_Neue`: Bold, display font for headings
-- `Inter`: Clean, readable font for body text and buttons
+- `CounterButton`: Reusable button component for counter actions
+- `@/fonts`: Centralized font exports so pages stay lean
 
 **3. Font Initialization**
 ```tsx
-const bebasNeue = Bebas_Neue({
+// fonts/index.ts
+import { Bebas_Neue, Inter } from "next/font/google";
+
+export const bebasNeue = Bebas_Neue({
   weight: "400",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const inter = Inter({
-  weight: ["400", "600"],
+export const inter = Inter({
   subsets: ["latin"],
+  display: "swap",
 });
 ```
-- `Bebas_Neue`: Single weight (400) for consistent bold display
-- `Inter`: Multiple weights (400=normal, 600=semibold) for flexibility
-- Both optimized to include only Latin characters
+- Fonts are defined once in `fonts/index.ts` using `next/font/google`
+- `bebasNeue`: Bold display font for headings
+- `inter`: Clean text font for controls and labels
+- Both use `display: "swap"` and the Latin subset for performance
 
 **4. State Management**
 ```tsx
@@ -256,12 +262,23 @@ counter/
 ├── app/
 │   ├── layout.tsx       # Root layout with font configuration
 │   ├── page.tsx         # Counter component
-│   ├── globals.css      # Global styles
-├── public/              # Static files
-├── package.json         # Project dependencies
-├── tsconfig.json        # TypeScript configuration
-├── tailwind.config.ts   # Tailwind CSS configuration
-└── next.config.ts       # Next.js configuration
+│   └── globals.css      # Global styles
+├── components/
+│   ├── counter-button.tsx  # Shared counter button
+│   └── ui/button.tsx       # Shadcn-styled base button
+├── fonts/
+│   └── index.ts            # Centralized font exports (bebasNeue, inter)
+├── lib/
+│   └── utils.ts            # Utility helpers
+├── public/                 # Static files
+├── package.json            # Project dependencies
+├── tsconfig.json           # TypeScript configuration
+├── postcss.config.mjs      # PostCSS/Tailwind pipeline
+├── eslint.config.mjs       # ESLint configuration
+├── pnpm-lock.yaml          # Locked dependencies
+├── pnpm-workspace.yaml     # Workspace settings
+├── components.json         # Shadcn UI registry
+└── next.config.ts          # Next.js configuration
 ```
 
 ---
@@ -272,7 +289,8 @@ counter/
 - **React 18**: UI library with hooks
 - **TypeScript**: Type-safe JavaScript
 - **Tailwind CSS**: Utility-first styling
-- **Google Fonts**: Bebas Neue and Inter fonts
+- **Shadcn UI**: Base button styling via `components/ui/button`
+- **Google Fonts**: Bebas Neue and Inter exported from `fonts/index.ts`
 
 ---
 

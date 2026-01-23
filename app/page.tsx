@@ -1,18 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Bebas_Neue, Inter } from "next/font/google";
 import { CounterButton } from "@/components/counter-button";
-
-const bebasNeue = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
-});
-
-const inter = Inter({
-  weight: ["400", "600"],
-  subsets: ["latin"],
-});
+import { bebasNeue } from "@/fonts";
 
 export default function Home() {
   const [count, setCount] = useState(0);
@@ -40,14 +30,14 @@ export default function Home() {
           <CounterButton
             label="−"
             onClick={decrement}
-            className={`${inter.className} flex-1 bg-red-500 hover:bg-red-600 text-white`}
+            className="flex-1 bg-red-500 hover:bg-red-600"
             ariaLabel="Decrement"
           />
 
           <CounterButton
             label="+"
             onClick={increment}
-            className={`${inter.className} flex-1 bg-green-500 hover:bg-green-600 text-white`}
+            className="flex-1 bg-green-500 hover:bg-green-600"
             ariaLabel="Increment"
           />
         </div>
@@ -55,7 +45,7 @@ export default function Home() {
         <CounterButton
           label="Reset"
           onClick={reset}
-          className={`${inter.className} w-full bg-gray-500 hover:bg-gray-600 text-white`}
+          className="w-full bg-gray-500 hover:bg-gray-600"
           ariaLabel="Reset"
         />
       </div>

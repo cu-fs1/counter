@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
+import { inter } from "@/fonts";
 
 export type CounterButtonProps = {
   label: string;
@@ -20,7 +21,7 @@ export function CounterButton({
   return (
     <Button
       onClick={onClick}
-      className={className}
+      className={`text-white ${className} ${inter.className}`}
       disabled={disabled}
       aria-label={ariaLabel}
     >
