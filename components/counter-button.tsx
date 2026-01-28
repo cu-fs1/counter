@@ -7,7 +7,6 @@ export type CounterButtonProps = {
   label: string;
   onClick: () => void;
   className?: string;
-  disabled?: boolean;
   ariaLabel?: string;
 };
 
@@ -15,14 +14,12 @@ export function CounterButton({
   label,
   onClick,
   className,
-  disabled,
   ariaLabel,
 }: CounterButtonProps) {
   return (
     <Button
       onClick={onClick}
-      className={`text-white ${className} ${inter.className}`}
-      disabled={disabled}
+      className={`text-white cursor-pointer ${className} ${inter.className}`}
       aria-label={ariaLabel}
     >
       {label}
